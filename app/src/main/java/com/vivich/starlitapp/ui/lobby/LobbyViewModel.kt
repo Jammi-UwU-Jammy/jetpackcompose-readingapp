@@ -1,6 +1,7 @@
 package com.vivich.starlitapp.ui.lobby
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.vivich.starlitapp.R
 import com.vivich.starlitapp.data.GETResult
@@ -110,6 +111,18 @@ class LobbyViewModel(
                         it.copy(errorMessages = errorMessages, isLoading = false)
                     }
                 }
+            }
+        }
+    }
+
+    companion object {
+        fun provideFactory(
+            postsRepository: PostsRepo,
+            preSelectedPostId: String? = null
+        ): ViewModelProvider.Factory = object : ViewModelProvider.Factory {
+            @Suppress("UNCHECKED_CAST")
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                return LobbyViewModel(postsRepository, preSelectedPostId) as T
             }
         }
     }
