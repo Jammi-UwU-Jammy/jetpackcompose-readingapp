@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface PostsRepo {
     suspend fun getPost(postId: String?) : GETResult<Post>
-    suspend fun getPostsFeed(): Result<PostsFeed>
+    suspend fun getPostsFeed(): GETResult<PostsFeed>
     fun observeFavorites(): Flow<Set<String>>
     fun observePostsFeed(): Flow<PostsFeed?>
     suspend fun toggleFavorite(postId: String)

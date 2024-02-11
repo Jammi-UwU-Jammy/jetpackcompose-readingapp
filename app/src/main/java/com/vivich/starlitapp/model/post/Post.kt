@@ -2,11 +2,11 @@ package com.vivich.starlitapp.model.post
 
 data class Post(
     val id: String,
-    val userId: String,
+    val title:String,
     val url: String,
     val publication: Publication,
     val metadata: Metadata,
-    val paragraph: Paragraph,
+    val paragraphs: List<Paragraph>,
 )
 
 data class Publication(
@@ -22,7 +22,8 @@ data class Metadata(
 
 data class PostAuthor(
     val name: String,
-    val url: String? = null
+    val url: String? = null,
+    val title: String? = null
 )
 
 data class Paragraph(
