@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Starlit App</string>
+    <string name="load_error">Load Error!</string>
 </resources>

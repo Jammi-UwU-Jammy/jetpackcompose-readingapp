@@ -1,4 +1,4 @@
 package com.vivich.starlitapp.ui.lobby
 
-class HomeRoute {
+class LobbyScreens {
 }
