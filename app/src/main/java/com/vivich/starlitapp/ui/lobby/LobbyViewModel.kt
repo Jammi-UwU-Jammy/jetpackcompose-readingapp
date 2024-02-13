@@ -75,7 +75,8 @@ class LobbyViewModel(
     private  val postsRepo: PostsRepo,
     preSelectedPostId: String?
 ): ViewModel(){
-    private  val viewModelState = MutableStateFlow(
+
+    private val viewModelState = MutableStateFlow(
         LobbyViewModelState(
             isLoading = true,
             selectedPostId = preSelectedPostId,
@@ -115,6 +116,33 @@ class LobbyViewModel(
         }
     }
 
+
+    fun toggleFavourite(postId: String) {
+        viewModelScope.launch {
+            postsRepo.toggleFavorite(postId)
+        }
+    }
+
+    fun selectArticle(postId: String) {
+        // Treat selecting a detail as simply interacting with it
+        interactedWithArticleDetails(postId)
+    }
+
+    fun interactedWithArticleDetails(postId: String) {
+        viewModelState.update {
+            it.copy(
+                selectedPostId = postId,
+                isArticleOpen = true
+            )
+        }
+    }
+
+    fun interactedWithFeed() {
+        viewModelState.update {
+            it.copy(isArticleOpen = false)
+        }
+    }
+
     companion object {
         fun provideFactory(
             postsRepository: PostsRepo,
@@ -124,6 +152,19 @@ class LobbyViewModel(
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return LobbyViewModel(postsRepository, preSelectedPostId) as T
             }
+        }
+    }
+
+    fun errorShown(errorId: Long) {
+        viewModelState.update { currentUiState ->
+            val errorMessages = currentUiState.errorMessages.filterNot { it.id == errorId }
+            currentUiState.copy(errorMessages = errorMessages)
+        }
+    }
+
+    fun onSearchInputChanged(searchInput: String) {
+        viewModelState.update {
+            it.copy(searchInput = searchInput)
         }
     }
 }
