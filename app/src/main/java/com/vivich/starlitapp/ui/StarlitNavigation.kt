@@ -4,6 +4,9 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 
 object StarlitDestinations{
+    const val LOGIN_ROUTE= "login"
+    const val AUTH_ROUTE= "login"
+
     const val LOBBY_ROUTE = "lobby"
     const val SETTINGS_ROUTE = "settings"
 }

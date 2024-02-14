@@ -2,7 +2,7 @@ package com.vivich.starlitapp
 
 import android.app.Application
 import com.vivich.starlitapp.data.AppContainer
-import com.vivich.starlitapp.data.lazyAppContainerImpl
+import com.vivich.starlitapp.data.LazyAppContainerImpl
 
 class StarlitApplication:Application(){
     companion object{
@@ -13,6 +13,6 @@ class StarlitApplication:Application(){
 
     override fun onCreate() {
         super.onCreate()
-        container = lazyAppContainerImpl(this)
+        container = LazyAppContainerImpl(this)
     }
 }
