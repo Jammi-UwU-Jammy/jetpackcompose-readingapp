@@ -11,5 +11,5 @@ fun SettingsRoute(
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
     // others
 ){
-    SettingsScreen()
+    SettingsScreen(openDrawer)
 }

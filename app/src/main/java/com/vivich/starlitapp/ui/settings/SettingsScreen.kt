@@ -5,12 +5,15 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.vivich.starlitapp.ui.lobby.LobbyTopNav
 
 @Composable
-fun SettingsScreen() {
+fun SettingsScreen(
+    openDrawer: () -> Unit
+) {
     Scaffold(
         topBar = {
-            Text(text = "This is Settings' top bar")
+            LobbyTopNav(openDrawer)
         }
     ){innerPadding->
         val screenModifier = Modifier.padding(innerPadding)

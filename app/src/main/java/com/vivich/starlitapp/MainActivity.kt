@@ -66,18 +66,17 @@ fun StarlitTestRun(
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route ?: StarlitDestinations.LOBBY_ROUTE
         val coroutineScope = rememberCoroutineScope()
-        val drawerState = rememberDrawerState(initialValue = DrawerValue.Open)
+        val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
         ModalNavigationDrawer(
             drawerContent = {
                 AppLeftDrawer(
                     currentRoute = currentRoute,
                     navigationToLobby = {
-//                        navigationActions.navigateToLobby
-                        navController.navigate(StarlitDestinations.LOBBY_ROUTE)
+                        navigationActions.navigateToLobby()
+//                        navController.navigate(StarlitDestinations.LOBBY_ROUTE)
                     },
                     navigationToSettings = {
-//                        navigationActions.navigateToSettings
-                        navController.navigate(StarlitDestinations.SETTINGS_ROUTE)
+                        navigationActions.navigateToSettings()
                     },
                     closeDrawer = { coroutineScope.launch { drawerState.close() } })
             },

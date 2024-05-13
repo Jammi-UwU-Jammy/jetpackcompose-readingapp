@@ -10,7 +10,6 @@ import androidx.compose.ui.Modifier
 fun LobbyScreen(
     openDrawer: () -> Unit
 ) {
-
     Scaffold(
         topBar = {
             LobbyTopNav(openDrawer)
